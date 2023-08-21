@@ -1,0 +1,21 @@
+<section id="container">
+    <h1>USUARIOS</h1>
+    <br>
+    <button type="button" id="add">AGREGAR</button>
+    {{#each users}}
+        <section class="users">
+            <hr>
+            <p><strong>Nombre:</strong> {{this.firstName}}</p>
+            {{#if this.lastName}}
+                <p><strong>Apellido:</strong> {{this.lastName}}</p>
+            {{/if}}
+            <p><strong>Email:</strong> {{this.email}}</p>
+            <p><strong>Role:</strong> {{this.role}}</p>
+            <br>
+            <button type="button" class="edit" id={{this._id}} onclick="action(event)">EDITAR</button>
+            <button type="button" class="delete" id={{this._id}} onclick="action(event)">ELIMINAR</button>
+        </section>
+    {{/each}}
+
+</section>
+<script src="./js/users.js"></script>

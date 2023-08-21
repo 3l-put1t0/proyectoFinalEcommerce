@@ -23,7 +23,7 @@ export class CartsDAO{
 
     async create(obj){
         try {
-            return await cartsModel.create({$push: obj});
+            return await cartsModel.create(obj);
         } catch (er) {
             logger.warning('NO SE PUDO CREAR CARRITO: ', er.message);
         }

@@ -1,17 +1,22 @@
 import { Router } from "express";
 
+import { ViewController } from "../controller/view.controller.js";
+
 const router = Router();
+const viewController = new ViewController();
 
-router.get('/login', (req, res) => {
-    res.render('login');
-});
+router.get('/login', viewController.getLogin);
 
-router.get('/register', (req, res) => {
-    res.render('register');
-});
+router.get('/register', viewController.getRegister);
 
-router.get('/products', (req, res) => {
-    res.render('products');
-});
+router.get('/products', viewController.getProducts);
+// router.get('/products/:count', viewController.getProducts);
+// router.get('/products/:count/:asc', viewController.getProducts);
+router.get('/carts/:cid', viewController.getCart);
+
+router.get('/chat', viewController.getChat);
+
+router.get('/users', viewController.getUsers);
+
 
 export default router;

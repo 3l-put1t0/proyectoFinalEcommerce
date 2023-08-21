@@ -1,0 +1,16 @@
+<h1>Carts</h1>
+<section id="container">
+    {{#each products}}
+        <section class="product">
+            <hr>
+            <hr>
+            <h2>Producto: {{this.product.title}}</h2>
+            <hr>
+            <h3><strong>Descripción: </strong><br> {{this.product.description}}</h3>
+            <h3><strong>Elementos seleccionados: </strong>{{quantity}}</h3>
+            <h3>Precio por unidad: {{this.product.price}}</h3>
+            <h3><strong>Precio total:</strong> {{this.product.total}}</h3>
+            <h4>Categoria: {{this.product.category}}</h4>
+        </section>
+    {{/each}}
+</section>

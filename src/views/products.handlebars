@@ -1,5 +1,17 @@
-<section id="container">
+<section id="toolbar">
     <h1>PRODUCTS</h1>
     <button id="logout" onclick="logout()">cerrar sesión</button>
 </section>
-<script src="./js/logout.js"></script>
+<br>
+<section id="delete">
+    <form action="submit">
+        <label for="id">Ingrese el ID a eliminar:</label>
+        <input type="number" id="id_delete" min="1">
+        <button>ELIMINAR</button>
+    </form>
+</section>
+<br>
+<section id="container">
+</section>
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/products.js"></script>

@@ -1,3 +1,7 @@
 
 warning: : ERROR AL BUSCAR AL USUARIO POR EMAIL
 warning: : ERROR AL BUSCAR AL USUARIO POR EMAIL
+warning: : ERROR AL EMITIR AL WEBSOCKET: 
+warning: : ERROR AL EMITIR AL WEBSOCKET:  The "listener" argument must be of type function. Received an instance of Array
+warning: : No se elimino todos los mensajes: 
+warning: : No se elimino todos los mensajes: 
