@@ -17,7 +17,7 @@ export class ProductsDAO {
                 }
             );
         } catch (er) {
-            logger.warning('NO SE PUDO OBTENER TODOS LOS PRODUCTOS: ', er.message);
+            logger.warning('NO SE PUDO OBTENER TODOS LOS PRODUCTOS: ', er);
         }
     }
 
@@ -25,7 +25,7 @@ export class ProductsDAO {
         try {
             return await productsModel.findById({ _id: id }).lean();
         } catch (er) {
-            logger.warning(`NO SE PUDO OBTENER EL PRODUCTO POR id: ${id}`, er.message);
+            logger.warning(`NO SE PUDO OBTENER EL PRODUCTO POR id: ${id}`, er);
         }
     }
 
@@ -33,7 +33,7 @@ export class ProductsDAO {
         try {
             return await productsModel.findOne({ owner }).lean();
         } catch (er) {
-            logger.warning(`NO SE PUDO OBTENER EL PRODUCTO POR EL DUEÑO: ${id}`, er.message);
+            logger.warning(`NO SE PUDO OBTENER EL PRODUCTO POR EL DUEÑO: ${id}`, er);
         }
     }
 
@@ -41,7 +41,7 @@ export class ProductsDAO {
         try {
             return await productsModel.findByIdAndUpdate({ _id: id }, { $set: obj });
         } catch (er) {
-            logger.warning('ERROR AL ACTUALIZAR EL PRODUCTO: ', er.message);
+            logger.warning('ERROR AL ACTUALIZAR EL PRODUCTO: ', er);
         }
     }
 
@@ -49,15 +49,15 @@ export class ProductsDAO {
         try {
             return await productsModel.create(obj);
         } catch (er) {
-            logger.warning('ERROR AL CREAR PRODUCTO: ', er.message);
+            logger.warning('ERROR AL CREAR PRODUCTO: ', er);
         }
     }
 
     async deleteId(id) {
         try {
-            return await userModel.deleteOne({ _id: id });
+            return await productsModel.deleteOne({ _id: id });
         } catch (er) {
-            logger.warning('ERROR AL ELIMINAR EL PRODUCTO POR id: ', er.message);
+            logger.warning('ERROR AL ELIMINAR EL PRODUCTO POR id: ', er);
         }
     }
 }

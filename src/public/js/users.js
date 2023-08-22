@@ -10,27 +10,11 @@ async function action(event) {
             }
         });
         const responseData = await response.json();
-        if (responseData.status === 'success') window.location.replace('/users');;
+        if (responseData.status === 'success') window.location.reload();;
     }
 
-    if (classs == 'edit') {}
+    if (classs == 'edit') {
+        localStorage.setItem('id', param);
+        window.location.replace('/users/modify');      
+    }
 }
-
-// async function logout(){
-//     const obj = {
-//         logout: true
-//     };
-//     const response = await fetch('/api/logout', {
-//         method: 'POST',
-//         body: JSON.stringify(obj),
-//         headers: {
-//             'Content-Type': 'application/json',
-//         }
-//     });
-//     const responseData = await response.json();
-//     if (responseData.status === 'success') window.location.replace('/login');;
-// }
-
-// Handlebars.registerHelper('isAdmin', function (value) {
-//     return value === 'ADMINISTRATOR';
-// });

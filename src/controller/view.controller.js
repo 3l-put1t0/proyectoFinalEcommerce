@@ -13,11 +13,11 @@ const messagaController = new MessageController();
 const userServices = new UserServices();
 const webSocket = new WebSocket();
 
-export class ViewController{
+export class ViewController {
 
     client = 0;
 
-    constructor(){
+    constructor() {
     }
 
     getLogin = (req, res) => {
@@ -39,7 +39,7 @@ export class ViewController{
         const section = 'products';
         const products = await productService.getAll(Number(count), Number(asc), query, 1);
         await webSocket.getConnection(section, products, 'emit', null);
-        res.status(201).render('products'); 
+        res.status(201).render('products');
         logger.info('Se carga: products');
     }
 
@@ -48,7 +48,7 @@ export class ViewController{
         const result = await cartsService.getId(cid);
         for (const i of result.products) {
             let price = i.product.price;
-            let total = Number(price)*Number(i.quantity);
+            let total = Number(price) * Number(i.quantity);
             i.product.total = total
         }
         res.status(201).render('carts', result);
@@ -56,10 +56,10 @@ export class ViewController{
     }
 
     getChat = async (req, res) => {
-        if (this.client == 0)  await messagaController.deleteAll();
+        if (this.client == 0) await messagaController.deleteAll();
         this.client = this.client + 1;
         const socket = "message";
-        await webSocket.getConnection(socket, null, 'on', this.changeData);        
+        await webSocket.getConnection(socket, null, 'on', this.changeData);
         res.status(201).render('chat');
         logger.info('Se carga: chats');
     }
@@ -78,16 +78,32 @@ export class ViewController{
 
 
     getUsers = async (req, res) => {
-        try { 
+        try {
             const users = await userServices.getAll();
             for (const i of users) {
                 delete i.password;
                 delete i.age;
-            }  
-            const result = { users } 
-            res.status(201).render('users', result);    
+            }
+            const result = { users }
+            res.status(201).render('users', result);
+        } catch (er) {
+            res.status(404).send({ status: 'error', message: `No se obtuvieron todos los usuarios` });
+        }
+    }
+
+    getUserModify = async (req, res) => {
+        try { 
+            res.status(201).render('modifyUser', {});
         } catch (er) { 
-            res.status(404).send({status: 'error', message: `No se obtuvieron todos los usuarios`});
+            res.status(404).send({ status: 'error', message: `No se obtuvo el usuario` });
+        }
+    }
+
+    getProductModify = async (req, res) => {
+        try { 
+            res.status(201).render('modifyProduct', {});
+        } catch (er) { 
+            res.status(404).send({ status: 'error', message: `No se pudo agregar producto` });
         }
     }
 }

@@ -8,7 +8,9 @@ const userController = new UserController();
 router.route('/')
     .get(userController.getAll);
 router.route('/:uid')
-    .delete(userController.deleteId);
+    .get(userController.getId)
+    .delete(userController.deleteId)
+    .put(userController.update);
     // .post();
 
 export default router;

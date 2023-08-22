@@ -8,7 +8,6 @@ export class SessionController{
 
     register = async (req, res) =>{
         const { firstName, lastName, email, password, role, age } = req.body;
-        console.log(req.body);
         if (!firstName || !email || !password) {
             req.logger.info('No se digitó toda la informacion');
             return res.status(400).send({status: 'error', message: 'No se digito toda la información'}) 
@@ -35,7 +34,6 @@ export class SessionController{
 
     login = async (req, res) => {
         const { email, password } = req.body;
-        console.log(req.body);
 
         const user = await userServices.getUserEmail(email);
         if (!user) {
@@ -47,6 +45,7 @@ export class SessionController{
             return res.status(403).send({status: 'error', message: 'El password del usuario no coincide'});
         }
         delete user.password;
+        req.session.user = user;
         res.status(200).send({status: 'success', message: 'El usuario se logueo'});
         req.logger.info('El usuario se logueo con exito');
 
@@ -56,8 +55,11 @@ export class SessionController{
         // NOTA: Falta logout
         const { logout } = req.body;
         if (logout) {
-            console.log('falta logout')
-            res.status(200).send({status: 'success', message: 'se cerró la sesión'});
+            req.session.destroy((err) => {
+                if (!err) {
+                    res.status(201).send({ status: "success", message: 'logout' });
+                } else res.send({ status: "error", message: err })
+            });
         };
     }
 }

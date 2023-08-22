@@ -9,7 +9,7 @@ export class UserDAO{
         try{
             return await userModel.find().lean();
         }catch(er){
-            logger.warning('ERROR AL BUSCAR TODOS LOS USUARIOS: ', er.message);
+            logger.warning('ERROR AL BUSCAR TODOS LOS USUARIOS: ', er);
         }    
     }
 
@@ -17,7 +17,7 @@ export class UserDAO{
         try{
             return await userModel.findById(id).lean();
         }catch(er){
-            logger.warning(`ERROR AL BUSCAR EL USUARIO POR ID: ${id}`, er.message);
+            logger.warning(`ERROR AL BUSCAR EL USUARIO POR ID: ${id}`, er);
         }    
     }
 
@@ -25,7 +25,7 @@ export class UserDAO{
         try{
             return await userModel.findOne({email}).lean();
         }catch(er){
-            logger.warning('ERROR AL BUSCAR AL USUARIO POR EMAIL: ', er.message);
+            logger.warning('ERROR AL BUSCAR AL USUARIO POR EMAIL: ', er);
         }    
     }
 
@@ -33,7 +33,7 @@ export class UserDAO{
         try{
             return await userModel.findByIdAndUpdate({_id: id}, {$set: obj});
         }catch(er){
-            logger.warning('ERROR AL ACTUALIZAR EL USUARIO: ', er.message);
+            logger.warning('ERROR AL ACTUALIZAR EL USUARIO: ', er);
         }    
     }
 
@@ -41,7 +41,7 @@ export class UserDAO{
         try{
             return await userModel.create(obj);
         }catch(er){
-            logger.warning('ERROR AL CREAR USUARIO: ', er.message);
+            logger.warning('ERROR AL CREAR USUARIO: ', er);
         }
     }
 
@@ -49,7 +49,7 @@ export class UserDAO{
         try{
             return await userModel.deleteOne({_id: id});
         }catch(er){
-            logger.warning('ERROR AL ELIMINAR EL USUARIO POR id: ', er.message);
+            logger.warning('ERROR AL ELIMINAR EL USUARIO POR id: ', er);
         }
     }
 

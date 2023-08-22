@@ -5,6 +5,6 @@ export class UserDTO{
         this.email = obj.email;
         this.password = obj.password;
         this.role = obj.role;
-        this.age = Number(obj.age);
+        obj.age == undefined ? this.age = obj.age : this.age = Number(obj.age);        
     }
 }

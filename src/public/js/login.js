@@ -2,12 +2,9 @@ const loginForm = document.getElementById('loginForm');
 
 loginForm.addEventListener('submit', async (event) => {
     event.preventDefault();
-    console.log('EVENT: ', event);
     const data = new FormData(loginForm);
-    console.log('data: ', data);
     const obj = {};
     data.forEach((value, key) => (obj[key] = value));
-    console.log('obj: ', obj);
     const response = await fetch('/api/login', {
         method: 'POST',
         body: JSON.stringify(obj),

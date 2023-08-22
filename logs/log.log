@@ -5,3 +5,15 @@ warning: : ERROR AL EMITIR AL WEBSOCKET:
 warning: : ERROR AL EMITIR AL WEBSOCKET:  The "listener" argument must be of type function. Received an instance of Array
 warning: : No se elimino todos los mensajes: 
 warning: : No se elimino todos los mensajes: 
+warning: : ERROR AL BUSCAR EL USUARIO POR ID: null
+warning: : ERROR AL ACTUALIZAR EL USUARIO: 
+warning: : ERROR AL ACTUALIZAR EL USUARIO: 
+warning: : ERROR AL ACTUALIZAR EL USUARIO:  Cast to Number failed for value "NaN" (type number) at path "age"
+warning: : ERROR AL ACTUALIZAR EL USUARIO:  Cast to Number failed for value "NaN" (type number) at path "age"
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id: 
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id: 
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id: 
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id:  userModel is not defined
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id:  userModel is not defined
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id:  userModel is not defined
+warning: : ERROR AL ELIMINAR EL PRODUCTO POR id:  userModel is not defined
