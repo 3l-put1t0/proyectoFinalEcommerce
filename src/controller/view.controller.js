@@ -92,18 +92,32 @@ export class ViewController {
     }
 
     getUserModify = async (req, res) => {
-        try { 
+        try {
             res.status(201).render('modifyUser', {});
-        } catch (er) { 
+        } catch (er) {
             res.status(404).send({ status: 'error', message: `No se obtuvo el usuario` });
         }
     }
 
-    getProductModify = async (req, res) => {
-        try { 
-            res.status(201).render('modifyProduct', {});
-        } catch (er) { 
+    getProductAdd = async (req, res) => {
+        try {
+            res.status(201).render('addProduct', {});
+        } catch (er) {
             res.status(404).send({ status: 'error', message: `No se pudo agregar producto` });
+        }
+    }
+
+    getProductModify = async (req, res) => {
+        try {
+            if (req.session.user.role == 'ADMINISTRATOR') {
+                req.session.user.onlyReadEmail = false;
+            } else { 
+                req.session.user.onlyReadEmail = true 
+            }
+            const user = req.session.user;
+            res.status(201).render('modifyProduct', { user });
+        } catch (er) {
+            res.status(404).send({ status: 'error', message: `No se pudo modificar producto, ${er}` });
         }
     }
 }

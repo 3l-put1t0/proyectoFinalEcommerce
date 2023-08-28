@@ -1,7 +1,7 @@
 <section class="container">
     <h1>Agregar productos</h1>
     <h2>Por favor agregue el producto</h2>
-    <form id="modifyProductForm">
+    <form id="addProductForm">
         <label class="info">Titulo del producto</label>
         <input type="text" name="title" id="title" required>
         <br>
@@ -26,20 +26,19 @@
         <br>
         <label class="info">Categoria</label>
         <input type="text" name="category" id="category" required>
-        <br>        
+        <br>
         <label class="info">Dueño</label>
-        <input type="text" name="owner" id="owner" required {{#if user.onlyReadEmail}} readonly {{/if}}>
-        <br>        
+        <input type="text" name="owner" id="owner" required readonly>
+        <br>
         <label class="info">Imagenes</label>
         <input name="thumbnails" id="thumbnails">
         <br>
 
     </form>
     <br>
-    <button type="submit" form="modifyProductForm">Actualizar</button>
+    <button type="submit" form="addProductForm">Agregar</button>
 </section>
 <br>
 <button type="button" onclick="back()">VOLVER</button>
 
-
-<script src="/js/modify.product.js"></script>
+<script src="/js/add.product.js"></script>

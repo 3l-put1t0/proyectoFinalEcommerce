@@ -1,6 +1,8 @@
 import { Router } from "express";
 
 import { CartsController } from "../controller/carts.controller.js";
+import policies from "../utility/auth.middleware.js";
+
 
 const router = Router();
 const cartsController = new CartsController();
@@ -11,5 +13,5 @@ router.route('/:cid')
     .put(cartsController.updateCart);
 router.route('/:cid/products/:pid')
     .delete(cartsController.deleteProduct)
-    .put(cartsController.updateCartProduct);
+    .put(policies.noAddProduct, cartsController.updateCartProduct);
 export default router;

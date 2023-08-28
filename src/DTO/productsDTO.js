@@ -4,10 +4,11 @@ export class ProductDTO{
         this.description = obj.description,
         obj.code == undefined ? this.code = obj.code : this.code = obj.code.toUpperCase(),
         this.price = obj.price,
-        this.status = obj.status,
+        this.status = Boolean(obj.status),
         this.stock = obj.stock,
         obj.category == undefined ? this.category = obj.category : this.category = obj.category.toUpperCase(),
-        this.thumbnails = obj.thumbnails
+        this.thumbnails = obj.thumbnails,
+        this.owner = obj.owner;
     }
 
 }

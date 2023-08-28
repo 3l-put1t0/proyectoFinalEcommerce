@@ -13,7 +13,9 @@ router.get('/register', viewController.getRegister);
 router.get('/products', viewController.getProducts);
 // router.get('/products/:count', viewController.getProducts);
 // router.get('/products/:count/:asc', viewController.getProducts);
-router.get('/products/add', policies.policySuper(), viewController.getProductModify);
+router.get('/products/add', policies.policySuper(), viewController.getProductAdd);
+
+router.get('/products/modify', policies.policySuper(), viewController.getProductModify);
 
 router.get('/carts/:cid', viewController.getCart);
 

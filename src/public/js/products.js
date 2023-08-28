@@ -18,10 +18,18 @@ async function action(event) {
 
     if (classs == 'edit') {
         localStorage.setItem('id', param);
-        // window.location.replace('/users/modify');      
+        window.location.replace('/products/modify');      
     }
+
 }
 
 function add() { 
     window.location.replace('/products/add')
+}
+
+function view(event){
+    const param = event.target.id;
+        
+    if(param == 'viewCart') window.location.replace('/carts')
+    if(param == 'viewUsers') window.location.replace('/users')
 }

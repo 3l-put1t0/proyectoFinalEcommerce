@@ -14,6 +14,7 @@ import sessionRouter from './src/router/session.router.js';
 import cartsRouter from './src/router/carts.router.js';
 import productsRouter from './src/router/products.router.js';
 import userRouter from './src/router/users.router.js';
+import ticketRouter from './src/router/ticket.router.js';
 
 const PORT = config.PORT || 8081;
 const KEY_SESSION = config.KEY_SESSION;
@@ -39,7 +40,7 @@ app.use(session({
     store: MongoStore.create({
         mongoUrl: URL_MONGO,
         mongoOptions: {useNewUrlParser: true, useUnifiedTopology: true},
-        ttl: 150
+        ttl: 1000
     }),
     secret: KEY_SESSION,  //  Firma para encriptar la sesión
     resave: true,
@@ -53,6 +54,7 @@ app.use('/api', sessionRouter);
 app.use('/api/carts', cartsRouter);
 app.use('/api/products', productsRouter);
 app.use('/api/users', userRouter);
+app.use('/api/ticket', ticketRouter);
 
 const server = app.listen(PORT, console.log(`ESCUCHANDO PUERTO: ${PORT}`));
 

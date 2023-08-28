@@ -20,14 +20,25 @@ export class ProductController {
         }
     }
 
+    getProduct = async (req, res) => {
+        try {
+            const { pid } = req.params;
+            const product = await productService.getId(pid);
+            res.status(200).send({ status: 'success', message: `Se obtuvo el producto`, payload: product });
+        } catch (er) {
+            res.status(404).send({ status: 'error', message: `No se obtuvo el producto` });
+
+        }
+    }
+
     createProduct = async (req, res) => {
         try {
-            const { title, description, code, price, status, stock, category, thumbnails } = req.body;
+            const { title, description, code, price, status, stock, category, thumbnails, owner } = req.body;
             if (!title || !description || !code || !price || !status || !stock || !category)
                 return res.status(404).send({ status: 'error', message: `No se ingresaron todos los valores` });
-            const product = { title, description, code, price, status, stock, category, thumbnails }
+            const product = { title, description, code, price, status, stock, category, thumbnails, owner }
             const result = await productService.create(product);
-            return res.status(200).send({ status: 'error', message: `Se creo el producto`, payload: result });
+            return res.status(200).send({ status: 'success', message: `Se creo el producto`, payload: result });
         } catch (er) { 
             return res.status(501).send({ status: 'error', message: `No se creo el producto` });
         }
@@ -35,8 +46,10 @@ export class ProductController {
 
     updateProduct = async (req, res) => {
         const { pid } = req.params
-        const { title, description, code, price, status, stock, category, thumbnails } = req.body;
-        const product = { title, description, code, price, status, stock, category, thumbnails };
+        const { title, description, code, price, status, stock, category, thumbnails, owner } = req.body;
+        let __status = 0;
+        status == 'true' ? __status = 1 : __status = 0;
+        const product = { title, description, code, price, status: __status, stock, category, thumbnails, owner };
         try {
             const result = await productService.update(pid, product)
             res.status(201).send({status: 'success', message: 'se actualizo producto', payload: result})

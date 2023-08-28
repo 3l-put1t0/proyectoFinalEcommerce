@@ -24,8 +24,17 @@ const nameSchema = new mongoose.Schema({
         enum: ['USER', 'ADMINISTRATOR', 'PREMIUN', 'DEVELOP'],
         default: 'USER'
     },
-    age: Number
+    age: Number,
+    cart_id: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "carts"
+    }
 });
+
+nameSchema.pre('findOne', function() {
+    this.populate('cart_id');
+});
+
 
 const userModel = mongoose.model(nameCollection, nameSchema);
 

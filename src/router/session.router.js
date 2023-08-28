@@ -7,5 +7,6 @@ const sessionController = new SessionController();
 router.post('/register', sessionController.register);
 router.post('/login', sessionController.login);
 router.post('/logout', sessionController.logout);
+router.get('/login', sessionController.getUserSession);
 
 export default router;          

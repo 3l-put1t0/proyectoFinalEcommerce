@@ -62,4 +62,8 @@ export class SessionController{
             });
         };
     }
+
+    getUserSession = (req, res) => {
+        res.status(201).send({status: 'success', message: 'usuario perteneciente a la sesión', payload: req.session.user});
+    }
 }

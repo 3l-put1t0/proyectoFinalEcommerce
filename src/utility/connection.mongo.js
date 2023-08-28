@@ -8,8 +8,8 @@ const URL_MONGO = config.URL_MONGO;
 export function connection() {
     try{
         mongoose.connect(URL_MONGO);
-        logger.info('CONEXIÓN EXITOSA');
+        logger.info('CONEXIÓN EXITOSA A DB');
     }catch(er){
-        logger.error('FALLO LA CONEXIÓN');
+        logger.error('FALLO LA CONEXIÓN', er);
     }
 }
